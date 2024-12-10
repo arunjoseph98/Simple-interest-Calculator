@@ -1,0 +1,137 @@
+JavaScript modules : used to transfer data from one js to another
+    - use import / export statements
+        - import statements : to use an export data from another
+            - 2 type of import statements:
+                - import with curly braces: if data exported using export keyword
+                - import without curly braces : if data exported using  export default keyword
+        - export statements : to share data from one js file to another
+            - 2 ways to export :
+                - using export keyword : used to  export multiple data from a single js file
+                - using export default keyword : this keyword must be at the end of that file
+
+REACT : advanced frontend application library
+-------------------------------------------------------
+    Basic react:
+        - React app is a collection of different library
+        - it is consist of different components, which used to display contents on browser.
+        - all the components are arranged in a tree structure.
+            - tree structure has a root node which is by default known as "App component"
+            - components are reusable.
+            - components are build using Pure JavaScript, these function are capable of doing single task using arguments
+                - function with no side effect.
+                - returns : how to display contents on browser
+        - Declarative approach
+        - Virtual DOM : light-weight  memory repersation of real DOM.
+        - Babel library : used to display contents into browser.
+        - in JSX we have to use camel case to write JSX content.
+        - JSX (JavaScript XML) : JS extention for writing HTML code in JavaScript, used to display contents in browser.
+            - JSX elements : ex : const heading = <h1>head</h1>
+            - Rules for using JSX:
+                - every JSX elements must be inside a single tag.
+                    - Parent tag can be any container tag (div, section,...) or react fragments(tag without name) (<> </>)
+                - every JSX code must have a closing tag.
+                    - self closing tag can be used (<startingTag/>)
+                - Instead of attribute "class" use "className" in JSX
+                - Instead of attribute "for" use "htmlFOR" in JSX
+                - in JSX, we can directly pass js code  inside curly braces.
+        
+    react app creation : 
+        - 2 ways to create react app:
+            - CRA (using create-react-app command)
+            - Vite : tool for building web application
+                - installing Vite Globally : npm i -g create-vite
+                - React app creation using vite :
+                    npm create vite@latest reactAppname -- -- template react
+    file and folder structure of react app using vite
+        - package.json file : npm configuration file for the project
+        - package-lock.json file : used to hold version of dependent of the project.
+        - eslint.config.js file: js configuration file
+        - node_modules folder: used to store dependent packages locally
+            - we can generate node_modules folder with the help of command npm install / npm inside
+        - Public folder: used to hold data that can be accessed by any part of the project.
+        - index.html file : entry point of react app
+        - src folder : logic of react app is defined here
+            - main.jsx file : used to render(displaying in browser) react app in html elements with id as its "root"
+                - createRoot() : create a root to display react components inside a browser DOM node.
+        - css file: used to defined style for all components in react app
+        - app.jsx file : used to create react root component
+        - assets folder : used to hold media file used in react project
+    
+    Components : used to display content in browser, to create a component create a js/jsx file with filename starting capital letters
+        - 2 ways to create component :
+            - function / Stateless based components : use js Pure function to build components,
+              function name must be similar as its filename. it must return a jsx code
+            - class based components : uses class to create component. class inherit react component class,
+                                       render() method is used to return JSX
+        - life cycle methods of react component:
+            - Mounting phase : putting jsx into DOM
+                - constructor()
+                - getDerivedStateFromProps()
+                - render()
+                - componentDidMount()
+            - updateing phase : when component get updated
+                - getDerivedStateFromProps()
+                - getSnapShortBeforeUpdate()
+                - shouldComponentUpdate() - return boolean value
+                    - render() 
+                - componentDidUpdate()
+            - Unmounting phase : Removing component from DOM
+                -
+        class based component            vs                 function based component
+    ------------------------------                  -------------------------------------
+    1. using class to create,             |          1. using js Pure function and return jsx
+       render method must return jsx      |
+                                          |
+    2. statefull component                |          2. Stateless component
+                                          |
+    3. hooks are not used                 |          3. hooks are used
+                                          |
+    4. constructor is used to             |          4. no need of constructor
+       initialize state                   |
+                                          |
+    5. life cycle methods are             |          5. life cycle methods are not avaiable
+       avaiable                           |
+                                          |
+
+
+    Data sharing between react components from Parent to child :
+        - use "porps" Object
+    porps : its a property of a component. its an object used to transfer data from parent to child,
+            parent data can be shared via child tag attribute.
+   
+    conditional rendering: used based on condition rendering jsx elements in browser, using if-else, ternary operator(?:) / truthy operator
+    
+    List in react: use map array method. set a key attribute to duplicating jsx elements in a List
+
+    css styling in react : 
+        - inline css : use style attribute to applay style to jsx elements,style must be as js object
+            - syntax :  style = {{css property}}
+        - External css : define a css file and link using import. we can not css file into a variable in component file
+            - import "css file path"
+        - using css module file: file with extention .module.css is know as css module in this
+            we have to define style in class.  to use module css we have to import.
+            - import variableName  from 'moduleCss file path'
+
+    event handling in react : syntax : event = {function call}
+        - binding function without arguments : event = {functionName}
+        - binding function with arguments : event = {()=> functionName(arg)}
+        - binding function with arguments as event : event = {(event)=>functionName(event)}
+    
+    State in react : used to store data of component, when a State value change component will rerender
+
+    Hooks in react : predefined methods in react. used to provide react component features to function based component.
+                     to use a hook in a functional component, it has to be call the hook.
+                    - Rules to call hooks in functional component:
+                        - import react hook in component file
+                        - to use hook in component call the hook in the top level of the component.
+                        - hooks cannot be conditional
+                    - based on react features there are different type of hooks are avaiable.
+                        - build in hooks :
+                            - useState(initial value):used to create state in function component, theis hook will return an array of 2 arguments.
+                              first argument is a state, second argument is a function name useed to update state.
+                            - useEffect(callbackfn,dependency) : used to apply side effects to a functional component. we can pass side effect as its
+                              first argument as call back function, we can also pass an optional dependency argument to decide when apply side effect in component
+                            - useRef(initial value) : is a react hook that lets you reference a value that's not needed for rendering.
+                              initial value is optional, it returns an Object having key "current"
+                        - custom hooks : create a js file  to define a specific function for a special task.
+                          export the function from that file. function name must start with 'use' keyword
